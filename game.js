@@ -1,11 +1,11 @@
-import cop from './actors/cop';
+import adventurer from './actors/adventurer';
 import Background from './background'
 import assets from './assets'
 
 export default class Game {
   constructor() {
     // this.background = new Background(assets);
-    this.actors = [cop];
+    this.actors = [adventurer];
   }
 
   tick() {

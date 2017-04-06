@@ -22,14 +22,16 @@ export default class Sprite {
   }
 
   draw(ctx, pos) {
+    const spritePos = this.currentSpritePos();
+    console.log(this.animationIndex(), spritePos)
     ctx.drawImage(
       this.image,
-      this.currentSpritePos()[1] * this.spriteWidth,
-      this.currentSpritePos()[0]  * this.spriteHeight,
+      spritePos[1] * this.spriteWidth,
+      spritePos[0] * this.spriteHeight,
       this.spriteWidth,
       this.spriteHeight,
-      pos[0],
       pos[1],
+      pos[0],
       this.spriteWidth,
       this.spriteHeight,
     );
@@ -42,7 +44,7 @@ export default class Sprite {
   currentSpritePos() {
     const len = this.animations.all.length;
     return [
-      Math.floor(this.animationIndex() / this.sheetHeight),
+      Math.floor(this.animationIndex() / this.sheetHeight / 3),
       this.animationIndex() % this.sheetWidth
     ];
   }
@@ -52,7 +54,7 @@ export default class Sprite {
   }
 
   update() {
-    console.log(this.animationFrame, this.currentAnimation().length);
+    // console.log(this.animationFrame, this.currentAnimation().length);
     this.animationFrame = (this.animationFrame + 1) % this.currentAnimation().length
   }
 }
